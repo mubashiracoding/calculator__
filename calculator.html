@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+<style>
+   body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background-color: rgb(177, 176, 176);
+      margin: 0;
+    }
+
+    .container {
+      background-color: whitesmoke;
+      width: 300px;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .display {
+      height: 80px;
+      width: 100%;
+      margin-bottom: 10px;
+      font-size: 25px;
+      outline: none;
+      border: none;
+      text-align: right;
+      padding-right: 10px;
+      background-color: #f0f0f0;
+      color: black;
+      pointer-events: none;
+    }
+
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-gap: 10px;
+    }
+
+    button {
+      padding: 20px;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      background-color:black;
+      color: white;
+      font-size: 30px;
+    }
+
+    button:active {
+      transform: scale(0.98);
+    }
+    .operators{
+      background-color:orange;
+      color: black;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <input type="text" class="display" >
+    <div class="grid-container">
+      <button class='operators'onclick=" append('+')">+</button>
+      <button onclick=" append(7)">7</button>
+      <button onclick=" append('8')">8</button>
+      <button onclick=" append('9')">9</button>
+      <button class='operators'onclick=" append('-')">-</button>
+      <button onclick=" append('4')">4</button>
+      <button onclick=" append('5')">5</button>
+      <button onclick=" append('6')">6</button>
+      <button class='operators'onclick=" append('*')">*</button>
+      <button onclick=" append('1')">1</button>
+      <button onclick=" append('2')">2</button>
+      <button onclick=" append('3')">3</button>
+      <button class='operators'onclick=" append('/')">/</button>
+      <button onclick=" append('0')">0</button>
+      <button onclick=" append('.')">.</button>
+      <button class='operators'onclick=" calculate()">=</button>
+      <button class='operators' onclick=" clean()">AC</button>
+    </div>
+  </div>
+
+  <script>
+const display=document.querySelector('.display');
+
+function append(input) 
+{
+display.value+=input;
+  
+}
+function clean(){
+display.value="";
+}
+function calculate(){
+  try{
+
+    display.value=eval(display.value);
+  }
+  catch(error){
+    display.value="Syntax Error";
+
+  }
+}
+
+  </script>
+</body>
+</html>
